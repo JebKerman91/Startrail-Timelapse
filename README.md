@@ -1,6 +1,8 @@
 # README #
 
-Python script to prepare startrail images for use in a timelapse
+Python script to prepare startrail images for use in a timelapse.
+
+Minimally modified from http://www.tobias-westmeier.de/astronomy_tutorial_startrails.php
 
 ### How do I get set up? ###
 
