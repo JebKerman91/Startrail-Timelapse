@@ -8,17 +8,20 @@ from PIL import Image
 files   = os.listdir(os.getcwd())
 images  = [name for name in files if name[-4:] in [".jpg", ".JPG"]]
 width, height = Image.open(images[0]).size
+total = str(len(images))
+
+prefix = input("Specify a prefix: ")
 
 stack   = numpy.zeros((height, width, 3), numpy.float)
 counter = 1
 
 for image in images:
-    print ("Processing image " + str(counter))
+    print ("Processing image " + str(counter) + " of " + total)
     image_new = numpy.array(Image.open(image), dtype = numpy.float)
     stack     = numpy.maximum(stack, image_new)
     stack = numpy.array(numpy.round(stack), dtype = numpy.uint8)
     output = Image.fromarray(stack, mode = "RGB")
-    output.save("MiniTrail_stacked_image " + str(counter) + ".jpg", "JPEG")
+    output.save(prefix + str(counter) + ".jpg", "JPEG")
     counter  += 1
 
 
